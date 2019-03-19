@@ -189,7 +189,6 @@ class MyThread implements Runnable
       }
       if(name == "f")
       {
-        t.join(10000);
         combineAndSolve(sudoku, repeats, missing);
       }
     }
@@ -244,6 +243,7 @@ public class ThreadVersion
 
       MyThread thread1 = new MyThread("c", sudoku, repeats, missing);
       MyThread thread2 = new MyThread("r", sudoku, repeats, missing);
+      Thread.sleep(100);
       if(repeats.size() == 0) //if we didnt find any problems, the solution was already correct.
       {
         System.out.println("Your solution has been validated. There are no errors");
@@ -253,6 +253,7 @@ public class ThreadVersion
       else //if there are problems, fix them!
       {
         MyThread thread3 = new MyThread("f", sudoku, repeats, missing);
+        Thread.sleep(100);
         System.out.println("\nYour solution has been validated. \nCorrect solution:");
         printSudoku(sudoku);
         System.out.println("\nThank you for using Sudoku Solution Validator by Haley Anderson");
